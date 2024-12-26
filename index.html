@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Concepts in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            font-size: 18px;
+        }
+        header {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 800px;
+        }
+        h2 {
+            color: #007bff;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 18px;
+        }
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #output {
+            background: #e9ecef;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            min-height: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Object Concepts in JavaScript</h1>
+    </header>
+    <section>
+        <h2>Encapsulation Example</h2>
+        <pre>
+// Encapsulation Example:
+let student = {
+    name: "Ahmed",
+    age: 12,
+    level: 5,
+    hello: function() {
+        return `Hello, I am ${this.name}, ${this.age} years old.`;
+    },
+    pass: function() {
+        this.age++;
+        this.level++;
+    }
+};
+student.pass();
+console.log(student.hello());
+        </pre>
+        <button onclick="runEncapsulationExample()">Run Example</button>
+        <div id="output-1"></div>
+    </section>
+    <section>
+        <h2>Constructor Function Example</h2>
+        <pre>
+// Constructor Example:
+function Student(name, age, level) {
+    this.name = name;
+    this.age = age;
+    this.level = level;
+    this.hello = function() {
+        return `Hello, I am ${this.name}, ${this.age} years old.`;
+    };
+    this.pass = function() {
+        this.age++;
+        this.level++;
+    };
+}
+let student = new Student("Ahmed", 12, 5);
+student.pass();
+console.log(student.hello());
+        </pre>
+        <button onclick="runConstructorExample()">Run Example</button>
+        <div id="output-2"></div>
+    </section>
+    <section>
+        <h2>Date Object Example</h2>
+        <pre>
+// Date Object Example:
+let currentDate = new Date();
+let specificDate = new Date(1999, 2, 14, 4, 20, 30);
+let dob = new Date('1999-05-12 04:20:30');
+console.log(currentDate);
+console.log(specificDate);
+console.log(dob);
+console.log(dob.getFullYear());
+console.log(dob.getMonth() + 1);
+console.log(dob.getDate());
+        </pre>
+        <button onclick="runDateExample()">Run Example</button>
+        <div id="output-3"></div>
+    </section>
+    <section>
+        <h2>Regular Expressions Example</h2>
+        <pre>
+// Regular Expressions Example:
+let regex = /hello/i;
+let str = "Hello World!";
+console.log(regex.test(str)); // true
+console.log(str.match(regex)); // ["Hello"]
+        </pre>
+        <button onclick="runRegexExample()">Run Example</button>
+        <div id="output-4"></div>
+    </section>
+    <script>
+        function runEncapsulationExample() {
+            let student = {
+                name: "Ahmed",
+                age: 12,
+                level: 5,
+                hello: function() {
+                    return `Hello, I am ${this.name}, ${this.age} years old.`;
+                },
+                pass: function() {
+                    this.age++;
+                    this.level++;
+                }
+            };
+            student.pass();
+            document.getElementById('output-1').textContent = student.hello();
+        }
+
+        function runConstructorExample() {
+            function Student(name, age, level) {
+                this.name = name;
+                this.age = age;
+                this.level = level;
+                this.hello = function() {
+                    return `Hello, I am ${this.name}, ${this.age} years old.`;
+                };
+                this.pass = function() {
+                    this.age++;
+                    this.level++;
+                };
+            }
+            let student = new Student("Ahmed", 12, 5);
+            student.pass();
+            document.getElementById('output-2').textContent = student.hello();
+        }
+
+        function runDateExample() {
+            let currentDate = new Date();
+            let specificDate = new Date(1999, 2, 14, 4, 20, 30);
+            let dob = new Date('1999-05-12 04:20:30');
+            document.getElementById('output-3').textContent =
+                `Current Date: ${currentDate}\n` +
+                `Specific Date: ${specificDate}\n` +
+                `DOB: ${dob}\nYear: ${dob.getFullYear()}\nMonth: ${dob.getMonth() + 1}\nDay: ${dob.getDate()}`;
+        }
+
+        function runRegexExample() {
+            let regex = /hello/i;
+            let str = "Hello World!";
+            document.getElementById('output-4').textContent =
+                `Regex Test: ${regex.test(str)}\nMatch: ${str.match(regex)}`;
+        }
+    </script>
+</body>
+</html>
